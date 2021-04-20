@@ -36,11 +36,16 @@ class TrashDetectionService:
 
     @classmethod
     def inference(cls , request):
+        print("request : ",request)
+        print("request data : ",request.data)
         query = {}
-        query["data"] = request.data
-        query["files"] = {"image" : request.FILES["image"].read()}
+        #query["data"] = request.data
+        #query["files"] = {"image" : request.FILES["image"].read()}
+        query["data"] = {"return_image" : True}
+        query["files"] = {"image" : request.data["file"].read()}
         
-        print("file type : ",type(request.FILES["image"]))
-        print("file length : ",len(request.FILES["image"]))
+        print("file type : ",type(query["files"]["image"]))
+        print("file length : ",len(query["files"]["image"]))
         response = TrashDetectionService.trash_detection_request(query)
         return response 
+        #return Response("hi",)
