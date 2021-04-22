@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-TORCHSERVE_URL = "http://127.0.0.1:8080/"
+TORCHSERVE_URL = "https://torchservemo5.azurewebsites.net/"
 """ALLOWED_HOSTS = [
     "https://personalwebsitemo5.vercel.app",
     "http://127.0.0.1:3000/"
