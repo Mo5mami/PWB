@@ -9,6 +9,9 @@ from .serializers import TrashDetectionSerializer
 from django.core.files import File 
 from django.core.files.images import ImageFile 
 from asgiref.sync import sync_to_async
+from pwb.celery import app as celery_app
+from celery import shared_task , current_app
+
 
 class TrashDetectionService:
     
@@ -18,6 +21,7 @@ class TrashDetectionService:
         return os.path.join(settings.TORCHSERVE_URL , "predictions/trash_detection")
 
     
+    #@shared_task
     @classmethod
     def trash_detection_request(cls , data):
 
@@ -26,6 +30,9 @@ class TrashDetectionService:
         prediction = json.loads(response.content.decode())
         return Response(prediction,status=response.status_code,)
 
+    
+    
+   
     
     @classmethod
     def inference(cls , request):
@@ -37,5 +44,9 @@ class TrashDetectionService:
         print("file type : ",type(query["files"]["image"]))
         print("file length : ",len(query["files"]["image"]))
         response = TrashDetectionService.trash_detection_request(query)
+        """task = TrashDetectionService.trash_detection_request.delay(query)
+        response = Response({},status=200)
+        if (task.status =="SUCCESS"):
+            response = task.get()"""
         return response 
         

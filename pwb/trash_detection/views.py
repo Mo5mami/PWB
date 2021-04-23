@@ -6,9 +6,7 @@ from asgiref.sync import sync_to_async
 import asyncio
 
 class TrashDetection(APIView):
-    async def __call__():
-        pass 
-
+    
     def post(self, request, format=None):
         """
         Demand inference on the object detection model
