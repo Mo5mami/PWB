@@ -6,7 +6,7 @@ from asgiref.sync import sync_to_async
 
 
 urlpatterns = [
-    path(r'trash-detection/inference/', sync_to_async(views.TrashDetection.as_view())),
+    path(r'trash-detection/inference/', views.trash_detection),
     
 ]
 

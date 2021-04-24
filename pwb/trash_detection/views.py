@@ -5,13 +5,19 @@ from .trash_detection_service import TrashDetectionService
 from asgiref.sync import sync_to_async
 import asyncio
 
-class TrashDetection(APIView):
+"""class TrashDetection(APIView):
     
     def post(self, request, format=None):
-        """
-        Demand inference on the object detection model
-        """
+    
         print("am I async : ",asyncio.iscoroutinefunction(self.post))
+        async_fn = sync_to_async(TrashDetectionService.inference,thread_sensitive=False)
+        return  async_fn(request)"""
+
+@api_view([ 'POST'])
+async def trash_detection(request):
+    if request.method == 'POST':
         return TrashDetectionService.inference(request)
+
+
     
         
