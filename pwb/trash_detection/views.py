@@ -14,7 +14,7 @@ import asyncio
         return  async_fn(request)"""
 
 @api_view([ 'POST'])
-async def trash_detection(request):
+def trash_detection(request):
     if request.method == 'POST':
         return TrashDetectionService.inference(request)
 
