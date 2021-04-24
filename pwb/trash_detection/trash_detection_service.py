@@ -9,8 +9,8 @@ from .serializers import TrashDetectionSerializer
 from django.core.files import File 
 from django.core.files.images import ImageFile 
 from asgiref.sync import sync_to_async
-from pwb.celery import app as celery_app
-from celery import shared_task , current_app
+#from pwb.celery import app as celery_app
+#from celery import shared_task , current_app
 
 
 class TrashDetectionService:

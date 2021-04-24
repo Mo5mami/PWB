@@ -1,1 +1,2 @@
-python manage.py runserver --settings=pwb.settings.prod
+#python manage.py runserver --settings=pwb.settings.prod
+gunicorn pwb.asgi.prod:application -k uvicorn.workers.UvicornWorker -w 4 --bind 0.0.0.0:80

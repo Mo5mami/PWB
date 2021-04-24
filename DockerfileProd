@@ -4,4 +4,4 @@ COPY ./ /PWB
 WORKDIR /PWB/pwb
 RUN pip install --no-cache-dir -r  /PWB/full_requirements.txt
 EXPOSE 80
-ENTRYPOINT ./run_docker
+ENTRYPOINT ./run_heroku
